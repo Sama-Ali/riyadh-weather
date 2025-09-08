@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# 🌤️ Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A beautiful weather application built with React, featuring real-time weather data, bilingual support (Arabic/English), and RTL/LTR text direction switching.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- 🌍 **Real-time Weather Data** - Current weather conditions from OpenWeatherMap API
+- 🌐 **Arabic and English language toggle**
+- 📱 **RTL/LTR Support** - Automatic text direction switching
+- 🎨 **Modern UI** - Material-UI components with responsive design
+- 📅 **Localized Dates** - Date formatting in both Arabic and English
 
-### `npm start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 18** - Frontend framework
+- **Material-UI** - UI component library
+- **i18next** - Internationalization
+- **Moment.js** - Date formatting and localization
+- **Axios** - HTTP client for API requests
+- **OpenWeatherMap API** - Weather data source
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+1. **Clone the repository**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies**
 
-### `npm run build`
+3. **Get API Key**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - Sign up at [OpenWeatherMap](https://openweathermap.org/api)
+   - Get your free API key
+   - Replace the API key in `src/TheCard.js` (line 45)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Open your browser**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🌐 Internationalization
 
-### `npm run eject`
+The app supports two languages:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Arabic (العربية)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- RTL text direction
+- Arabic month names
+- Right-aligned text
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### English
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- LTR text direction
+- English month names
+- Left-aligned text
 
-## Learn More
+### Adding New Languages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Create new translation files in `public/locales/[language]/translation.json`
+2. Update `src/i18n.js` configuration
+3. Add language toggle logic in `src/TheCard.js`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Project Structure
 
-### Code Splitting
+```
+weather-app/
+├── public/
+│   ├── locales/
+│   │   └── ar/
+│   │       └── translation.json
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   └── TheCard.js          # Main weather component
+│   ├── styles/
+│   │   └── style.css           # Custom styles
+│   ├── i18n.js                 # Internationalization config
+│   ├── App.js                  # Main app component
+│   └── index.js                # App entry point
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Styling
 
-### Analyzing the Bundle Size
+- Modify `src/style.css` for custom styles
+- Update Material-UI theme in `src/App.js`
+- Adjust RTL/LTR styles as needed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📝 License
 
-### Making a Progressive Web App
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🙏 Acknowledgments
 
-### Advanced Configuration
+- [OpenWeatherMap](https://openweathermap.org/) for weather data API
+- [Material-UI](https://mui.com/) for beautiful UI components
+- [i18next](https://www.i18next.com/) for internationalization
+- [Moment.js](https://momentjs.com/) for date formatting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📞 Contact
 
-### Deployment
+Sama - samaali2h@gmail.com@example.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Project Link: [https://github.com/Sama-Ali/riyadh-weather]
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+⭐ Don't forget to give this project a star if you found it helpful!

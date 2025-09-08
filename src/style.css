@@ -1,0 +1,20 @@
+body {
+  font-family: "Tajawal", sans-serif;
+  background-color: #295db7;
+}
+
+.card {
+  min-width: 275px !important;
+  text-align: right !important;
+  background-color: #023285 !important;
+  color: white !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  padding-bottom: 0 !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+Button {
+  color: #023285 !important;
+  font-family: "Tajawal", sans-serif !important;
+}
