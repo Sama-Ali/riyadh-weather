@@ -5,26 +5,31 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import "./style.css";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import "moment/locale/ar";
 import { useTranslation } from "react-i18next";
+import CircularProgress from "@mui/material/CircularProgress";
 
-let cancelRequest = null;
+import { fetchWeather } from "./features/logics/weatherSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function TheCard() {
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => {
+    return state.weather.isLoading;
+    //       ↑      ↑      ↑
+    //       |      |      └── "isLoading" from initialState
+    //       |      └── "weather" from store reducer key
+    //       └── "state" (entire Redux state)
+  });
+  const weather = useSelector((state) => {
+    return state.weather.weather;
+  });
+
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState("ar");
-  // const [direction, setDirection] = useState("rtl");
-  const [weather, setWeather] = useState({
-    city: null,
-    temp: null,
-    description: null,
-    icon: null,
-    min: null,
-    max: null,
-  });
 
   moment.locale(language);
   const date = moment().format("DD MMMM YYYY");
@@ -38,35 +43,8 @@ export default function TheCard() {
 
   useEffect(() => {
     i18n.changeLanguage("ar");
-    axios
-      .get(
-        // Riyadh: 24.71355, 46.67529
-        "https://api.openweathermap.org/data/2.5/weather?lat=24.71355&lon=46.67529&appid=4f8f3e042a291c506b6074a175006a36",
-        // "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=4f8f3e042a291c506b6074a175006a36",
-        {
-          cancelToken: new axios.CancelToken((cancel) => {
-            cancelRequest = cancel;
-          }),
-        }
-      )
-      .then((response) => {
-        console.log("response: ", response);
-        setWeather({
-          city: response.data.name,
-          temp: Math.round(response.data.main.temp - 272.15),
-          description: response.data.weather[0].description,
-          icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
-          min: Math.round(response.data.main.temp_min - 272.15),
-          max: Math.round(response.data.main.temp_max - 272.15),
-        });
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
-    return () => {
-      console.log("cancelRequest: ", cancelRequest);
-      cancelRequest();
-    };
+    console.log("fetching weather");
+    dispatch(fetchWeather());
   }, []);
   return (
     <>
@@ -94,12 +72,15 @@ export default function TheCard() {
                 spacing={2}
                 style={{ fontSize: "2rem", fontWeight: "900" }}
               >
-                <h1 style={{ margin: 10 }}>{t(weather.temp)}°</h1>
-                <img
-                  src={`${weather.icon}`}
-                  alt="weather icon"
-                  style={{ width: "4rem", height: "4rem" }}
-                />
+                {isLoading ? (
+                  <CircularProgress style={{ margin: 40, color: "white" }} />
+                ) : (
+                  <img
+                    src={`${weather.icon}`}
+                    alt="weather icon"
+                    style={{ width: "4rem", height: "4rem" }}
+                  />
+                )}
               </Stack>
               <h3 style={{ textAlign: language === "ar" ? "right" : "left" }}>
                 {t(weather.description)}
