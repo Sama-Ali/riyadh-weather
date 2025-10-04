@@ -6,7 +6,6 @@ A beautiful weather application built with React, featuring real-time weather da
 
 - 🌍 **Real-time Weather Data** - Current weather conditions from OpenWeatherMap API
 - 🔄 **Async State Management** - Redux Toolkit with async thunks for weather data fetching
-
 - 🌐 **Arabic and English language toggle**
 - 📱 **RTL/LTR Support** - Automatic text direction switching
 - 🎨 **Modern UI** - Material-UI components with responsive design
